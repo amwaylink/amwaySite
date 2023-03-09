@@ -4,10 +4,12 @@ const preferDefault = m => (m && m.default) || m
 
 
 exports.components = {
-  "component---cache-dev-404-page-js": preferDefault(require("/Users/dlindo/Desktop/amwaySite/.cache/dev-404-page.js")),
-  "component---src-pages-404-js": preferDefault(require("/Users/dlindo/Desktop/amwaySite/src/pages/404.js")),
-  "component---src-pages-index-js": preferDefault(require("/Users/dlindo/Desktop/amwaySite/src/pages/index.js")),
-  "component---src-pages-page-2-tsx": preferDefault(require("/Users/dlindo/Desktop/amwaySite/src/pages/page-2.tsx")),
-  "component---src-pages-using-typescript-tsx": preferDefault(require("/Users/dlindo/Desktop/amwaySite/src/pages/using-typescript.tsx"))
+  "component---cache-dev-404-page-js": preferDefault(require("/Users/graphx3/Desktop/amwaySite-1/.cache/dev-404-page.js")),
+  "component---src-pages-404-js": preferDefault(require("/Users/graphx3/Desktop/amwaySite-1/src/pages/404.js")),
+  "component---src-pages-index-js": preferDefault(require("/Users/graphx3/Desktop/amwaySite-1/src/pages/index.js")),
+  "component---src-pages-page-2-js": preferDefault(require("/Users/graphx3/Desktop/amwaySite-1/src/pages/page-2.js")),
+  "component---src-pages-using-ssr-js": preferDefault(require("/Users/graphx3/Desktop/amwaySite-1/src/pages/using-ssr.js")),
+  "component---src-pages-using-typescript-tsx": preferDefault(require("/Users/graphx3/Desktop/amwaySite-1/src/pages/using-typescript.tsx")),
+  "component---src-templates-using-dsg-js": preferDefault(require("/Users/graphx3/Desktop/amwaySite-1/src/templates/using-dsg.js"))
 }
 
