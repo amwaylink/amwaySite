@@ -6,6 +6,7 @@ const Redirect = () => {
     const meta = document.createElement("meta")
     meta.name = "referrer"
     meta.content = "no-referrer"
+    meta.description = "Amway Home Products Nutrilite"
     document.querySelector("head").appendChild(meta)
     window.location.href = "https://www.amway.com/share-link/kgFZNL1jM"
   }, [])
