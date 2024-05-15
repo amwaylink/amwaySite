@@ -1,149 +1,25 @@
-import * as React from "react"
-import Redirect from "../components/Redirect"
-import Layout from "../components/Layout"
-import "../styles/global.css"
+import React from "react"
+import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 
-const IndexPage = () => {
-  return (
-    <Layout>
-      <div className="bg-red-200 h-full grow ">
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hellohello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hellohello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hellohello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hellohello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hellohello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hellohello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hellohello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hellohello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hellohello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hellohello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hellohello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello
-        hellohello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hellohello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello hello hello hello hello hello hello hello hello hello
-        hello hello hello
-      </div>
-    </Layout>
-  )
-}
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+
+const IndexPage = () => (
+  <Layout>
+    <SEO title="Home" />
+    <h1>Hi people</h1>
+    <p>Welcome to your new Gatsby site.</p>
+    <p>Now go build something great.</p>
+    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
+      <StaticImage
+        src="../images/gatsby-astronaut.png"
+        alt="gatsby astronaut"
+      />
+    </div>
+    <p><Link to="/page-2/">Go to page 2</Link></p>
+    <p><Link to="/using-typescript/">Go to "Using TypeScript"</Link></p>
+  </Layout>
+)
+
 export default IndexPage

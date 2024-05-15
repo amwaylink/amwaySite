@@ -1,10 +1,12 @@
+// tailwind.config.js
 module.exports = {
+  future: {},
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // Adjust this pattern based on your project structure
-    "./public/index.html",
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {},
   },
+  variants: {},
   plugins: [],
 }
