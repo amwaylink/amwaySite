@@ -12,10 +12,10 @@ import "../styles/global.css"
 
 const Layout = ({ children }) => {
   return (
-    <div className="w-full h-full min-h-screen bg-red-200">
+    <div className="w-full h-full min-h-screen">
       <Header />
-      <navbar className="bg-red-200 h-10 w-full">test</navbar>
-      <main>{children}</main>
+
+      <main className="w-11/12 max-w-[1366px] mx-auto py-5">{children}</main>
       <footer></footer>
     </div>
   )
