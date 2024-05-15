@@ -2,8 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "../components/Layout"
+import SEO from "../components/Seo"
 
 const IndexPage = () => (
   <Layout>
@@ -17,8 +17,12 @@ const IndexPage = () => (
         alt="gatsby astronaut"
       />
     </div>
-    <p><Link to="/page-2/">Go to page 2</Link></p>
-    <p><Link to="/using-typescript/">Go to "Using TypeScript"</Link></p>
+    <p>
+      <Link to="/page-2/">Go to page 2</Link>
+    </p>
+    <p>
+      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
+    </p>
   </Layout>
 )
 
