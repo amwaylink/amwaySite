@@ -93,10 +93,7 @@ const Header = ({ siteTitle }) => {
           }
         >
           <MenuLink to="/" className="uppercase">
-            <button onClick={() => setShowSubMenu(1)}>
-              products
-              <p>{showSubMenu}</p>
-            </button>
+            <button onClick={() => setShowSubMenu(1)}>products</button>
             <div
               className={
                 (showSubMenu === 1 ? " left-[0vw] " : " left-[101vw] ") +

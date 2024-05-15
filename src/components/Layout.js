@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
       <Header />
 
       <main className="w-11/12 max-w-[1366px] mx-auto py-5">{children}</main>
-      <footer></footer>
+      <footer>footer</footer>
     </div>
   )
 }
