@@ -4,9 +4,10 @@ import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { Bars3Icon, IconBar3, XMarkIcon } from "@heroicons/react/24/solid"
 
-const MenuLink = ({ to, children }) => (
+const MenuLink = ({ to, children, ...props }) => (
   <Link
     to={to}
+    {...props}
     className="group uppercase flex items-center justify-center h-16 border-b-2 border-b-transparent hover:border-b-black px-5 duration-200 bg-white"
   >
     {children}
@@ -22,8 +23,11 @@ const Header = ({ siteTitle }) => {
   }
 
   return (
-    <header className=" h-16 bg-white shadow-xl">
-      <div className="relative w-11/12 max-w-[1366px] mx-auto flex flex-row items-center justify-between  ">
+    <header
+      onMouseLeave={() => setShowSubMenu(0)}
+      className="h-16 bg-white shadow-xl"
+    >
+      <div className="relative w-11/12 max-w-[1366px] mx-auto flex flex-row items-center justify-between ">
         <div className="h-16 aspect-[160/56] flex flex-row justify-center items-center text-sky-900">
           <svg
             className="fill-current w-auto h-auto"
@@ -69,7 +73,7 @@ const Header = ({ siteTitle }) => {
           onClick={handleClick}
           className={
             (menuOpen === false ? "" : "fixed right-[4.16666vw]") +
-            " h-16 w-full flex items-center justify-end z-10 md:hidden"
+            " h-16 w-full flex items-center justify-end md:hidden z-20"
           }
         >
           MENU{" "}
@@ -89,182 +93,23 @@ const Header = ({ siteTitle }) => {
         <div
           className={
             (menuOpen ? "right-0 " : "-right-48 ") +
-            " fixed h-full pt-16 md:pt-0 top-0 bg-white md:static flex flex-col md:flex-row duration-300 ease-in-out z-1"
+            " fixed h-full  pt-16 md:pt-0 top-0 bg-white md:static flex flex-col md:flex-row duration-300 ease-in-out z-10"
           }
         >
-          <MenuLink to="/" className="uppercase">
-            <button onClick={() => setShowSubMenu(1)}>products</button>
-            <div
-              className={
-                (showSubMenu === 1 ? " left-[0vw] " : " left-[101vw] ") +
-                " fixed md:absolute top-16 md:left-0 w-full md:hidden group-hover:block bg-gray-50 border-t min-h-24 -z-10"
-              }
-            >
-              <div className="w-full px-10 py-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-                {/* Nutrition Column */}
-                <div>
-                  <h2 className="font-bold text-lg">NUTRITION</h2>
-                  <Link
-                    to="/nutrition/vitamins-supplements"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Vitamins & Supplements
-                  </Link>
-                  <Link
-                    to="/nutrition/weight-management"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Weight Management
-                  </Link>
-                  <Link
-                    to="/nutrition/sports-nutrition"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Sports Nutrition
-                  </Link>
-                  <Link
-                    to="/nutrition/energy-drinks"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Energy Drinks
-                  </Link>
-                  <Link
-                    to="/nutrition/wellness-recommender"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Wellness Recommender
-                  </Link>
-                  <Link
-                    to="/nutrition/wellness-needs"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Wellness Needs
-                  </Link>
-                  <Link
-                    to="/nutrition/shop-all"
-                    className="block py-1 font-bold hover:bg-gray-100"
-                  >
-                    Shop All Nutrition
-                  </Link>
-                </div>
-                {/* Home Column */}
-                <div>
-                  <h2 className="font-bold text-lg">HOME</h2>
-                  <Link
-                    to="/home/air-treatment"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Air Treatment
-                  </Link>
-                  <Link
-                    to="/home/cookware"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Cookware
-                  </Link>
-                  <Link
-                    to="/home/dish"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Dish
-                  </Link>
-                  <Link
-                    to="/home/disinfectant-cleaners"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Disinfectant Cleaners
-                  </Link>
-                  <Link
-                    to="/home/laundry"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Laundry
-                  </Link>
-                  <Link
-                    to="/home/surface-cleaners"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Surface Cleaners
-                  </Link>
-                  <Link
-                    to="/home/water-treatment"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Water Treatment
-                  </Link>
-                  <Link
-                    to="/home/shop-all"
-                    className="block py-1 font-bold hover:bg-gray-100"
-                  >
-                    Shop All Home
-                  </Link>
-                </div>
-                {/* Personal Care Column */}
-                <div>
-                  <h2 className="font-bold text-lg">PERSONAL CARE</h2>
-                  <Link
-                    to="/personal-care/bath-body"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Bath & Body Care
-                  </Link>
-                  <Link
-                    to="/personal-care/hair-care"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Hair Care
-                  </Link>
-                  <Link
-                    to="/personal-care/oral-care"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Oral Care
-                  </Link>
-                  <Link
-                    to="/personal-care/shop-all"
-                    className="block py-1 font-bold hover:bg-gray-100"
-                  >
-                    Shop All Personal Care
-                  </Link>
-                </div>
-                {/* Beauty Column */}
-                <div>
-                  <h2 className="font-bold text-lg">BEAUTY</h2>
-                  <Link
-                    to="/beauty/skin-care"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Skin Care
-                  </Link>
-                  <Link
-                    to="/beauty/makeup"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Makeup
-                  </Link>
-                  <Link
-                    to="/beauty/fragrance"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Fragrance
-                  </Link>
-                  <Link
-                    to="/beauty/artistry-app"
-                    className="block py-1 hover:bg-gray-100"
-                  >
-                    Artistry™ Beauty App
-                  </Link>
-                  <Link
-                    to="/beauty/shop-all"
-                    className="block py-1 font-bold hover:bg-gray-100"
-                  >
-                    Shop All Beauty
-                  </Link>
-                </div>
-              </div>
-            </div>
+          <MenuLink
+            to="/"
+            className="uppercase"
+            onMouseEnter={() => setShowSubMenu(1)}
+            onClick={() => setShowSubMenu(1)}
+          >
+            PRODUCTS
           </MenuLink>
-          <MenuLink to="/" className="uppercase">
+
+          <MenuLink
+            to="/"
+            className="uppercase"
+            onMouseEnter={() => setShowSubMenu(2)}
+          >
             Categories
           </MenuLink>
           <MenuLink to="/" className="uppercase">
@@ -273,6 +118,167 @@ const Header = ({ siteTitle }) => {
           <MenuLink to="/" className="uppercase">
             Register
           </MenuLink>
+        </div>
+      </div>
+
+      {/* Products Menu Items */}
+      <div
+        className={
+          (showSubMenu === 1
+            ? " left-[0vw] opacity-100 block "
+            : " left-[101vw] opacity-0 ") +
+          " fixed h-full md:h-auto overflow-y-auto md:absolute top-16 md:left-0 w-full group-hover:block bg-gray-50 border-t min-h-24 duration-500 ease-in-out "
+        }
+      >
+        <div className="w-full max-w-[1366px] mx-auto px-10 pt-5 pb-24 md:pb-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm ">
+          {/* Nutrition Column */}
+          <div>
+            <h2 className="font-bold text-lg">NUTRITION</h2>
+            <Link
+              to="/nutrition/vitamins-supplements"
+              className="block py-1 hover:bg-gray-100"
+            >
+              Vitamins & Supplements
+            </Link>
+            <Link
+              to="/nutrition/weight-management"
+              className="block py-1 hover:bg-gray-100"
+            >
+              Weight Management
+            </Link>
+            <Link
+              to="/nutrition/sports-nutrition"
+              className="block py-1 hover:bg-gray-100"
+            >
+              Sports Nutrition
+            </Link>
+            <Link
+              to="/nutrition/energy-drinks"
+              className="block py-1 hover:bg-gray-100"
+            >
+              Energy Drinks
+            </Link>
+            <Link
+              to="/nutrition/wellness-recommender"
+              className="block py-1 hover:bg-gray-100"
+            >
+              Wellness Recommender
+            </Link>
+            <Link
+              to="/nutrition/wellness-needs"
+              className="block py-1 hover:bg-gray-100"
+            >
+              Wellness Needs
+            </Link>
+            <Link
+              to="/nutrition/shop-all"
+              className="block py-1 font-bold hover:bg-gray-100"
+            >
+              Shop All Nutrition
+            </Link>
+          </div>
+          {/* Home Column */}
+          <div>
+            <h2 className="font-bold text-lg">HOME</h2>
+            <Link
+              to="/home/air-treatment"
+              className="block py-1 hover:bg-gray-100"
+            >
+              Air Treatment
+            </Link>
+            <Link to="/home/cookware" className="block py-1 hover:bg-gray-100">
+              Cookware
+            </Link>
+            <Link to="/home/dish" className="block py-1 hover:bg-gray-100">
+              Dish
+            </Link>
+            <Link
+              to="/home/disinfectant-cleaners"
+              className="block py-1 hover:bg-gray-100"
+            >
+              Disinfectant Cleaners
+            </Link>
+            <Link to="/home/laundry" className="block py-1 hover:bg-gray-100">
+              Laundry
+            </Link>
+            <Link
+              to="/home/surface-cleaners"
+              className="block py-1 hover:bg-gray-100"
+            >
+              Surface Cleaners
+            </Link>
+            <Link
+              to="/home/water-treatment"
+              className="block py-1 hover:bg-gray-100"
+            >
+              Water Treatment
+            </Link>
+            <Link
+              to="/home/shop-all"
+              className="block py-1 font-bold hover:bg-gray-100"
+            >
+              Shop All Home
+            </Link>
+          </div>
+          {/* Personal Care Column */}
+          <div>
+            <h2 className="font-bold text-lg">PERSONAL CARE</h2>
+            <Link
+              to="/personal-care/bath-body"
+              className="block py-1 hover:bg-gray-100"
+            >
+              Bath & Body Care
+            </Link>
+            <Link
+              to="/personal-care/hair-care"
+              className="block py-1 hover:bg-gray-100"
+            >
+              Hair Care
+            </Link>
+            <Link
+              to="/personal-care/oral-care"
+              className="block py-1 hover:bg-gray-100"
+            >
+              Oral Care
+            </Link>
+            <Link
+              to="/personal-care/shop-all"
+              className="block py-1 font-bold hover:bg-gray-100"
+            >
+              Shop All Personal Care
+            </Link>
+          </div>
+          {/* Beauty Column */}
+          <div>
+            <h2 className="font-bold text-lg">BEAUTY</h2>
+            <Link
+              to="/beauty/skin-care"
+              className="block py-1 hover:bg-gray-100"
+            >
+              Skin Care
+            </Link>
+            <Link to="/beauty/makeup" className="block py-1 hover:bg-gray-100">
+              Makeup
+            </Link>
+            <Link
+              to="/beauty/fragrance"
+              className="block py-1 hover:bg-gray-100"
+            >
+              Fragrance
+            </Link>
+            <Link
+              to="/beauty/artistry-app"
+              className="block py-1 hover:bg-gray-100"
+            >
+              Artistry™ Beauty App
+            </Link>
+            <Link
+              to="/beauty/shop-all"
+              className="block py-1 font-bold hover:bg-gray-100"
+            >
+              Shop All Beauty
+            </Link>
+          </div>
         </div>
       </div>
     </header>
