@@ -25,20 +25,11 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+
+      <main className="w-full max-w-[1366px] mx-auto">{children}</main>
+      <footer className="bg-gray-100 h-14 flex justify-center items-center text-sm text-gray-700">
+        ©Copyright {new Date().getFullYear()}, Amway Link
+      </footer>
     </>
   )
 }
