@@ -1,6 +1,7 @@
 import React from "react"
+import { memo } from "react"
 
-const Logo = () => {
+const Logo = memo(({ className }) => {
   return (
     <div className="h-16 aspect-[160/56] flex flex-row justify-center items-center text-sky-900">
       <svg
@@ -44,6 +45,5 @@ const Logo = () => {
       </h1>
     </div>
   )
-}
-
+})
 export default Logo
