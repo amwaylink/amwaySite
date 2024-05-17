@@ -24,9 +24,9 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header className={"static"} siteTitle={data.site.siteMetadata.title} />
 
-      <main className="w-full max-w-[1366px] mx-auto">{children}</main>
+      <main className="static w-full max-w-[1366px] mx-auto">{children}</main>
       <footer className="bg-gray-100 h-14 flex justify-center items-center text-sm text-gray-700">
         ©Copyright {new Date().getFullYear()}, Amway Link
       </footer>

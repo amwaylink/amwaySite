@@ -10,7 +10,7 @@ const IndexPage = () => (
     <SEO title="Home" />
 
     <div className=" flex flex-col md:flex-row bg-amber-100 lg:max-h-96 ">
-      <div className="w-full md:w-1/2">
+      <div className="w-full md:w-1/2 ">
         <StaticImage
           src="../images/amway-nutrition-products.jpeg"
           alt="Nutrilite"
@@ -30,7 +30,7 @@ const IndexPage = () => (
         </button>
       </div>
     </div>
-    <div>Recommended for you</div>
+    <div>Recommended for you product grid</div>
     <div>Brand Slider</div>
   </Layout>
 )

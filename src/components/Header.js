@@ -21,7 +21,7 @@ const MenuLink = ({ to, children, ...props }) => (
   </Link>
 )
 
-const Header = ({ siteTitle }) => {
+const Header = ({ className }) => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [showSubMenu, setShowSubMenu] = useState(0)
   const handleClick = () => {
@@ -32,9 +32,9 @@ const Header = ({ siteTitle }) => {
   return (
     <header
       onMouseLeave={() => setShowSubMenu(0)}
-      className="h-16 bg-white shadow-md"
+      className={"fixed w-full z-10 h-16 bg-white shadow-md " + className}
     >
-      <div className="relative w-11/12 max-w-[1366px] mx-auto flex flex-row items-center justify-between">
+      <div className="relative z-20 w-11/12 max-w-[1366px] mx-auto flex flex-row items-center justify-between">
         <Logo />
         <button
           onClick={handleClick}
