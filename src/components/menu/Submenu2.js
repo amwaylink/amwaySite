@@ -15,7 +15,7 @@ const Submenu2 = () => {
           className="flex flex-col gap-2 py-2 md:py-1 group md:p-2 group"
         >
           <StaticImage
-            src="../images/amway-nutrition-products.jpeg"
+            src="../../images/amway-nutrition-products.jpeg"
             alt="Nutrilite"
             className="w-full h-full max-w-[150px] lg:max-w-[200px] group-hover:scale-[102%] duration-300 ease-in-out"
           />
@@ -29,7 +29,7 @@ const Submenu2 = () => {
           className="flex flex-col gap-2 py-2 md:py-1 group md:p-2 group"
         >
           <StaticImage
-            src="../images/amway-home-products.jpeg"
+            src="../../images/amway-home-products.jpeg"
             alt="Nutrilite"
             className="w-full h-full max-w-[150px] lg:max-w-[200px] group-hover:scale-[102%] duration-300 ease-in-out"
           />
@@ -43,7 +43,7 @@ const Submenu2 = () => {
           className="flex flex-col gap-2 py-2 md:py-1 group md:p-2 group"
         >
           <StaticImage
-            src="../images/amway-personal-care.jpeg"
+            src="../../images/amway-personal-care.jpeg"
             alt="Nutrilite"
             className="w-full h-full max-w-[150px] lg:max-w-[200px] group-hover:scale-[102%] duration-300 ease-in-out"
           />
@@ -57,7 +57,7 @@ const Submenu2 = () => {
           className="flex flex-col gap-2 py-2 md:py-1 group md:p-2 group"
         >
           <StaticImage
-            src="../images/amway-beauty-products.jpeg"
+            src="../../images/amway-beauty-products.jpeg"
             alt="Nutrilite"
             className="w-full h-full max-w-[150px] lg:max-w-[200px] group-hover:scale-[102%] duration-300 ease-in-out"
           />
