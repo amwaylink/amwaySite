@@ -26,10 +26,8 @@ const Layout = ({ children }) => {
     <>
       <Header className={"static"} siteTitle={data.site.siteMetadata.title} />
 
-      <main className="static pt-16 w-full max-w-[1366px] mx-auto">
-        {children}
-      </main>
-      <footer className="bg-gray-100 h-14 flex justify-center items-center text-sm text-gray-700">
+      <main className="static pt-16 w-full">{children}</main>
+      <footer className="bg-gray-300 h-14 flex justify-center items-center text-sm text-gray-700">
         ©Copyright {new Date().getFullYear()}, Amway Link
       </footer>
     </>
