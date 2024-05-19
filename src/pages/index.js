@@ -1,14 +1,15 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-import ProductSlider from "../components/products/ProductSlider"
+import BrandSlider from "../components/products/BrandSlider"
 import ProductGrid from "../components/products/ProductGrid"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
+import useProductData from "../hooks/useProductData"
 
 const IndexPage = ({ data }) => {
-  const products = data.allProduct.nodes
+  const { products, brands } = useProductData()
+  const [category, setCategory] = React.useState("")
 
   return (
     <Layout>
@@ -43,24 +44,36 @@ const IndexPage = ({ data }) => {
             CHOOSE CATEGORY
           </h2>
           <div className="flex flex-col md:flex-row gap-4 *:uppercase *:font-bold">
-            <button className="border-2 border-lime-600 text-lime-700 hover:bg-lime-100 duration-300 ease-in-out w-11/12 md:max-w-max px-6 py-3 rounded-full mx-auto lg:mx-0">
+            <button
+              onClick={() => setCategory("nutrition")}
+              className="border-2 border-lime-600 text-lime-700 hover:bg-lime-100 duration-300 ease-in-out w-11/12 md:max-w-max px-6 py-3 rounded-full mx-auto lg:mx-0"
+            >
               nutrition
             </button>
-            <button className="border-2 border-pink-500 text-pink-600 hover:bg-pink-100 duration-300 ease-in-out w-11/12 md:max-w-max px-6 py-3 rounded-full mx-auto lg:mx-0">
+            <button
+              onClick={() => setCategory("beauty")}
+              className="border-2 border-pink-500 text-pink-600 hover:bg-pink-100 duration-300 ease-in-out w-11/12 md:max-w-max px-6 py-3 rounded-full mx-auto lg:mx-0"
+            >
               beauty
             </button>
-            <button className="border-2 border-gray-400 text-gray-500 hover:bg-gray-100 duration-300 ease-in-out w-11/12 md:max-w-max px-6 py-3 rounded-full mx-auto lg:mx-0">
+            <button
+              onClick={() => setCategory("home")}
+              className="border-2 border-gray-400 text-gray-500 hover:bg-gray-100 duration-300 ease-in-out w-11/12 md:max-w-max px-6 py-3 rounded-full mx-auto lg:mx-0"
+            >
               home
             </button>
-            <button className="border-2 border-blue-300 text-blue-500 hover:bg-blue-50 duration-300 ease-in-out w-11/12 md:max-w-max px-6 py-3 rounded-full mx-auto lg:mx-0">
+            <button
+              onClick={() => setCategory("personal-care")}
+              className="border-2 border-blue-300 text-blue-500 hover:bg-blue-50 duration-300 ease-in-out w-11/12 md:max-w-max px-6 py-3 rounded-full mx-auto lg:mx-0"
+            >
               personal care
             </button>
           </div>
         </div>
-        <ProductGrid products={products} />
+        <ProductGrid products={products} category={category} />
       </div>
-      <div className="w-full py-5 bg-gray-100">
-        <ProductSlider products={products} category="" />
+      <div className="w-full py-5 bg-gray-100 px-8">
+        <BrandSlider brands={brands} category={category} />
       </div>
     </Layout>
   )

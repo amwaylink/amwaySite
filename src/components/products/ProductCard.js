@@ -4,7 +4,7 @@ import React from "react"
 
 const ProductCard = ({ product }) => {
   return (
-    <button className="bg-white rounded-xl shadow-lg grid grid-rows-[1fr_auto_1fr] w-full aspect-[3/4] overflow-hidden border my-5 group">
+    <button className="bg-white max-w-[22rem] rounded-xl shadow-lg grid grid-rows-[1fr_auto_1fr] w-full aspect-[3/4] overflow-hidden border my-5 group">
       <img
         className="w-full aspect-square p-5"
         src={product.image_url}
