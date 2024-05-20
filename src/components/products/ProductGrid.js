@@ -1,29 +1,69 @@
-// src/components/ProductGrid.js
-import React from "react"
+import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import ProductCard from "./ProductCard"
 
-const ProductGrid = ({ products, category }) => {
+const ProductGrid = ({ products, category, currentPage, setCurrentPage }) => {
+  const [shuffledProducts, setShuffledProducts] = useState([])
+  const productsPerPage = 12
+
+  useEffect(() => {
+    if (!category) {
+      const shuffled = [...products].sort(() => 0.5 - Math.random())
+      setShuffledProducts(shuffled)
+    }
+  }, [category, products])
+
   let filteredProducts = products
 
   // Filter products by category if specified
   if (category) {
     filteredProducts = products.filter(product => product.category === category)
+  } else {
+    filteredProducts = shuffledProducts
   }
 
-  // Limit to 12 products
-  filteredProducts = filteredProducts.slice(0, 12)
+  // Calculate the products to display for the current page
+  const indexOfLastProduct = currentPage * productsPerPage
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage
+  const currentProducts = filteredProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  )
+
+  // Handle page change
+  const handlePageChange = pageNumber => {
+    setCurrentPage(pageNumber)
+  }
+
+  // Calculate total pages
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage)
 
   return (
-    <div
-      className="w-11/12 max-w-[1366px] mx-auto grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
-      dots={4}
-    >
-      {filteredProducts.map(product => (
-        <div key={product.sku}>
-          <ProductCard product={product} />
+    <div className="w-11/12 max-w-[1366px] mx-auto pb-10">
+      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {currentProducts.map(product => (
+          <div key={product.sku}>
+            <ProductCard product={product} />
+          </div>
+        ))}
+      </div>
+      {totalPages > 1 && (
+        <div className="mt-4 flex justify-center">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => handlePageChange(index + 1)}
+              className={`px-4 py-2 mx-1 border-2 border-gray-300 rounded duration-300 ease-in-out ${
+                currentPage === index + 1
+                  ? "bg-gray-200"
+                  : "bg-white hover:bg-gray-100"
+              }`}
+            >
+              {index + 1}
+            </button>
+          ))}
         </div>
-      ))}
+      )}
     </div>
   )
 }
@@ -40,6 +80,8 @@ ProductGrid.propTypes = {
     })
   ).isRequired,
   category: PropTypes.string,
+  currentPage: PropTypes.number.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
 }
 
 ProductGrid.defaultProps = {

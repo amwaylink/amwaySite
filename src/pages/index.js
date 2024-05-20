@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import BrandSlider from "../components/products/BrandSlider"
@@ -6,10 +6,36 @@ import ProductGrid from "../components/products/ProductGrid"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import useProductData from "../hooks/useProductData"
+import RegistrationForm from "../components/forms/RegistrationForm"
 
 const IndexPage = ({ data }) => {
   const { products, brands } = useProductData()
-  const [category, setCategory] = React.useState("")
+  const [category, setCategory] = useState("")
+  const [currentPage, setCurrentPage] = useState(1)
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const newCategory = window.location.hash.replace("#", "")
+      setCategory(newCategory)
+      setCurrentPage(1) // Reset to the first page
+    }
+
+    // Set the category on component mount
+    handleHashChange()
+
+    // Add event listener for hash changes
+    window.addEventListener("hashchange", handleHashChange)
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange)
+    }
+  }, [])
+
+  const handleCategoryChange = newCategory => {
+    setCategory(newCategory)
+    setCurrentPage(1) // Reset to the first page
+    window.location.hash = newCategory
+  }
 
   return (
     <Layout>
@@ -45,35 +71,43 @@ const IndexPage = ({ data }) => {
           </h2>
           <div className="flex flex-col md:flex-row gap-4 *:uppercase *:font-bold">
             <button
-              onClick={() => setCategory("nutrition")}
+              onClick={() => handleCategoryChange("nutrition")}
               className="border-2 border-lime-600 text-lime-700 hover:bg-lime-100 duration-300 ease-in-out w-11/12 md:max-w-max px-6 py-3 rounded-full mx-auto lg:mx-0"
             >
               nutrition
             </button>
             <button
-              onClick={() => setCategory("beauty")}
+              onClick={() => handleCategoryChange("beauty")}
               className="border-2 border-pink-500 text-pink-600 hover:bg-pink-100 duration-300 ease-in-out w-11/12 md:max-w-max px-6 py-3 rounded-full mx-auto lg:mx-0"
             >
               beauty
             </button>
             <button
-              onClick={() => setCategory("home-products")}
+              onClick={() => handleCategoryChange("home-products")}
               className="border-2 border-gray-400 text-gray-500 hover:bg-gray-100 duration-300 ease-in-out w-11/12 md:max-w-max px-6 py-3 rounded-full mx-auto lg:mx-0"
             >
               home
             </button>
             <button
-              onClick={() => setCategory("personal-care")}
+              onClick={() => handleCategoryChange("personal-care")}
               className="border-2 border-blue-300 text-blue-500 hover:bg-blue-50 duration-300 ease-in-out w-11/12 md:max-w-max px-6 py-3 rounded-full mx-auto lg:mx-0"
             >
               personal care
             </button>
           </div>
         </div>
-        <ProductGrid products={products} category={category} />
+        <ProductGrid
+          products={products}
+          category={category}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
       <div className="w-full py-5 bg-gray-100 px-8">
         <BrandSlider brands={brands} category={category} />
+      </div>
+      <div className="w-full max-w-[600px] mx-auto py-10 lg:py-20">
+        <RegistrationForm />
       </div>
     </Layout>
   )
