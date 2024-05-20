@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
 
       <a
         href={product.link}
-        className="border-t h-full flex justify-center items-center group-hover:bg-blue-100 duration-300 ease-in-out"
+        className="border-t h-full flex justify-center items-center group-hover:bg-blue-100 duration-300 ease-in-out font-bold"
       >
         View Product
       </a>
