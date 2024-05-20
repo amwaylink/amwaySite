@@ -6,6 +6,21 @@ const ProductGrid = ({ products, category, currentPage, setCurrentPage }) => {
   const [shuffledProducts, setShuffledProducts] = useState([])
   const productsPerPage = 12
 
+  const getHref = () => {
+    switch (category.toLowerCase()) {
+      case "nutrition":
+        return "https://amway.com/share-link/r7jVkoptz"
+      case "home":
+        return "https://amway.com/share-link/U1oIswVV2"
+      case "beauty":
+        return "https://amway.com/share-link/en4NiYTGh"
+      case "personal-care":
+        return "https://amway.com/share-link/G4~YojAyr"
+      default:
+        return "https://amway.com/share-link/8P45XUnP7"
+    }
+  }
+
   useEffect(() => {
     if (!category) {
       const shuffled = [...products].sort(() => 0.5 - Math.random())
@@ -64,6 +79,18 @@ const ProductGrid = ({ products, category, currentPage, setCurrentPage }) => {
           ))}
         </div>
       )}
+      <div className="w-full flex justify-center items-center pt-10 ">
+        <a
+          href={getHref()}
+          className="w-max px-6 py-3 bg-black uppercase text-white rounded-full"
+        >
+          {category ? (
+            <>SHOP ALL {category} PRODUCTS</>
+          ) : (
+            "SHOP ALL AMWAY PRODUCTS"
+          )}
+        </a>
+      </div>
     </div>
   )
 }

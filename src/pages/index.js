@@ -83,7 +83,7 @@ const IndexPage = ({ data }) => {
               beauty
             </button>
             <button
-              onClick={() => handleCategoryChange("home-products")}
+              onClick={() => handleCategoryChange("home")}
               className="border-2 border-gray-400 text-gray-500 hover:bg-gray-100 duration-300 ease-in-out w-11/12 md:max-w-max px-6 py-3 rounded-full mx-auto lg:mx-0"
             >
               home
