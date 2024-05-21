@@ -5,7 +5,7 @@ const Logo = memo(({ className }) => {
   return (
     <div className="h-16 aspect-[160/56] flex flex-row justify-center items-center text-sky-900">
       <svg
-        className="fill-current w-auto h-auto"
+        className=" fill-current w-full h-full"
         viewBox="0 0 160 56"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"

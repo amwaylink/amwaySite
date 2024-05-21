@@ -32,6 +32,7 @@ const Header = ({ className }) => {
     >
       <div className="relative z-20 w-11/12 max-w-[1366px] mx-auto flex flex-row items-center justify-between">
         <Logo />
+
         <button
           onClick={handleClick}
           className={`${
