@@ -2,11 +2,7 @@ import React, { useState } from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import Logo from "./Logo"
-import {
-  Bars3Icon,
-  ChevronRightIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/solid"
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid"
 import Submenu1 from "../components/menu/Submenu1"
 import Submenu2 from "../components/menu/Submenu2"
 import Submenu3 from "../components/menu/Submenu3"

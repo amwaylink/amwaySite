@@ -15,7 +15,11 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
           results.forEach(item => {
             createNode({
               ...item,
-              id: createNodeId(`${idPrefix}-${item.sku || item.brand}`),
+              id: createNodeId(
+                `${idPrefix}-${item.sku || item.brand || item.category}-${
+                  item.subcategory || item.brand
+                }`
+              ),
               internal: {
                 type: nodeType,
                 contentDigest: createContentDigest(item),
@@ -31,5 +35,7 @@ exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
   return Promise.all([
     createNodesFromCSV("src/data/products.csv", "Product", "product"),
     createNodesFromCSV("src/data/brands.csv", "Brand", "brand"),
+    createNodesFromCSV("src/data/submenu1.csv", "Submenu1", "submenu1"),
+    createNodesFromCSV("src/data/submenu3.csv", "Submenu3", "submenu3"),
   ])
 }

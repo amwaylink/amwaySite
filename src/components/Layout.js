@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
 import Header from "./Header"
 
 const Layout = ({ children }) => {
@@ -20,7 +19,10 @@ const Layout = ({ children }) => {
       <Header className={"static"} siteTitle={data.site.siteMetadata.title} />
 
       <main className="static pt-16 w-full">{children}</main>
-      <footer className="bg-gray-300 h-14 flex justify-center items-center text-sm text-gray-700">
+      <footer className="bg-gray-300 flex flex-col p-5 justify-center items-center text-center text-sm text-gray-700">
+        <b className="block">
+          Become an Amway Independent Business Owner. Register Today!
+        </b>
         ©Copyright {new Date().getFullYear()}
       </footer>
     </>

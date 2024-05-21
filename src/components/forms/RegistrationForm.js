@@ -41,7 +41,7 @@ const RegisterForm = () => {
         Required Information to Register
       </h4>
 
-      <ul className="list-disc pl-5 mb-6 text-sm">
+      <ul className="list-disc pl-5 mb-6 text-sm text-[#CD853F]">
         <li>
           <b>First and Last Name</b> (Your Name must match your Tax ID Document)
         </li>
@@ -147,9 +147,9 @@ const RegisterForm = () => {
           </select>
         </div>
         <i className="block text-sm pb-3">
-          * Upon completion of registration, you will receive an email with a
-          verified link requesting your Tax ID information in order to complete
-          your registration.
+          * Upon submitting the form, you will receive an email with a
+          verification link to complete your registration as an Amway
+          Independent Business Owner (IBO).
         </i>
         <button type="submit" className={buttonClasses}>
           SUBMIT REGISTRATION

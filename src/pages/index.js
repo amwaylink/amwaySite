@@ -4,7 +4,6 @@ import { StaticImage } from "gatsby-plugin-image"
 import BrandSlider from "../components/products/BrandSlider"
 import ProductGrid from "../components/products/ProductGrid"
 import Layout from "../components/Layout"
-import SEO from "../components/Seo"
 import useProductData from "../hooks/useProductData"
 import RegistrationForm from "../components/forms/RegistrationForm"
 
@@ -39,8 +38,6 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Home" />
-
       <div className="flex flex-col md:flex-row bg-amber-100 lg:max-h-96 w-full max-w-[1366px] mx-auto">
         <div className="w-full md:w-1/2">
           <StaticImage

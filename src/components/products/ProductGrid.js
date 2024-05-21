@@ -23,8 +23,7 @@ const ProductGrid = ({ products, category, currentPage, setCurrentPage }) => {
 
   useEffect(() => {
     if (!category) {
-      const shuffled = [...products].sort(() => 0.5 - Math.random())
-      setShuffledProducts(shuffled)
+      setShuffledProducts(products)
     }
   }, [category, products])
 
@@ -82,6 +81,7 @@ const ProductGrid = ({ products, category, currentPage, setCurrentPage }) => {
       <div className="w-full flex justify-center items-center pt-10 ">
         <a
           href={getHref()}
+          rel="noopener noreferrer"
           className="w-max px-6 py-3 bg-black uppercase text-white rounded-full"
         >
           {category ? (
