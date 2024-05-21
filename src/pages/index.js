@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { graphql } from "gatsby"
+import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import BrandSlider from "../components/products/BrandSlider"
 import ProductGrid from "../components/products/ProductGrid"
@@ -56,9 +57,12 @@ const IndexPage = ({ data }) => {
             pace to earn extra income—with Amway's free education courses and
             the support of fellow business owners.
           </p>
-          <button className="bg-green-800 hover:bg-green-700 text-white max-w-max px-6 py-3 rounded-full mx-auto lg:mx-0">
+          <Link
+            to="#registration"
+            className="bg-green-800 hover:bg-green-700 text-white max-w-max px-6 py-3 rounded-full mx-auto lg:mx-0"
+          >
             START YOUR BUSINESS
-          </button>
+          </Link>
         </div>
       </div>
       <div>
@@ -103,7 +107,10 @@ const IndexPage = ({ data }) => {
       <div className="w-full py-5 bg-gray-100 px-8">
         <BrandSlider brands={brands} category={category} />
       </div>
-      <div className="w-full max-w-[600px] mx-auto py-10 lg:py-20">
+      <div
+        id="registration"
+        className="w-full max-w-[600px] mx-auto py-10 lg:py-20"
+      >
         <RegistrationForm />
       </div>
     </Layout>

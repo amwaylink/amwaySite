@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import emailjs from "emailjs-com"
+import { ArrowPathIcon } from "@heroicons/react/24/solid"
 
 const inputClasses =
   "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-300 focus:border-blue-300"
@@ -14,8 +16,10 @@ const RegisterForm = () => {
     confirmEmail: "",
     country: "United States",
     language: "English",
-    businessParticipants: "no",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [message, setMessage] = useState("")
+  const [isFading, setIsFading] = useState(false)
 
   const handleChange = e => {
     const { name, value } = e.target
@@ -24,12 +28,123 @@ const RegisterForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    // Handle form submission logic here
-    console.log("Form submitted", formData)
+
+    // Validate required fields
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.email ||
+      !formData.confirmEmail ||
+      !formData.country ||
+      !formData.language
+    ) {
+      setMessage(getMessage("required", formData.language))
+      return
+    }
+
+    // Validate email match
+    if (formData.email !== formData.confirmEmail) {
+      setMessage(getMessage("mismatch", formData.language))
+      return
+    }
+
+    setIsSubmitting(true)
+    setMessage(getMessage("sending", formData.language))
+
+    // Prepare the email data
+    const emailData = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      confirmEmail: formData.confirmEmail,
+      country: formData.country,
+      language: formData.language,
+    }
+
+    emailjs
+      .send(
+        process.env.GATSBY_EMAILJS_SERVICE_ID,
+        process.env.GATSBY_EMAILJS_TEMPLATE_ID,
+        emailData,
+        process.env.GATSBY_EMAILJS_USER_ID
+      )
+      .then(
+        response => {
+          setMessage(getMessage("success", formData.language))
+          setTimeout(() => {
+            setIsFading(true)
+            setTimeout(() => {
+              setIsSubmitting(false)
+              setIsFading(false)
+              setFormData({
+                firstName: "",
+                lastName: "",
+                email: "",
+                confirmEmail: "",
+                country: "United States",
+                language: "English",
+              })
+            }, 1000)
+          }, 5000)
+        },
+        error => {
+          console.log("FAILED...", error)
+        }
+      )
+  }
+
+  const getMessage = (type, language) => {
+    const messages = {
+      sending: {
+        English: "The registration form is being sent",
+        Spanish: "El formulario de registro está siendo enviado",
+        "Simplified Chinese": "注册表正在发送",
+        Korean: "등록 양식이 전송 중입니다",
+        Russian: "Регистрационная форма отправляется",
+      },
+      success: {
+        English: "Registration Request Submitted",
+        Spanish: "Solicitud de registro enviada",
+        "Simplified Chinese": "注册请求已提交",
+        Korean: "등록 요청이 제출되었습니다",
+        Russian: "Запрос на регистрацию отправлен",
+      },
+      mismatch: {
+        English: "Emails do not match",
+        Spanish: "Los correos electrónicos no coinciden",
+        "Simplified Chinese": "电子邮件不匹配",
+        Korean: "이메일이 일치하지 않습니다",
+        Russian: "Электронные письма не совпадают",
+      },
+      required: {
+        English: "All fields are required",
+        Spanish: "Todos los campos son obligatorios",
+        "Simplified Chinese": "所有字段都是必填的",
+        Korean: "모든 필드는 필수입니다",
+        Russian: "Все поля обязательны для заполнения",
+      },
+    }
+    return messages[type][language]
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg">
+    <div className="relative max-w-4xl mx-auto p-6 bg-white rounded-lg">
+      {isSubmitting && (
+        <div
+          className={`absolute inset-0 flex items-center justify-center bg-white transition-opacity duration-1000 ${
+            isFading ? "opacity-0" : "opacity-100"
+          }`}
+        >
+          <div className="text-center">
+            <p className="text-2xl font-bold flex flex-col gap-4 text-gray-700">
+              {message === getMessage("sending", formData.language) && (
+                <ArrowPathIcon className="animate-spin h-10 w-10 mx-auto" />
+              )}
+              {message}
+            </p>
+          </div>
+        </div>
+      )}
       <h2 className="text-2xl font-black mb-4">
         SAVE MONEY AND MAKE MONEY WHEN YOU BUY OR SELL AMWAY PRODUCTS
       </h2>
@@ -68,6 +183,7 @@ const RegisterForm = () => {
             className={inputClasses}
             value={formData.firstName}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="mb-4">
@@ -82,6 +198,7 @@ const RegisterForm = () => {
             className={inputClasses}
             value={formData.lastName}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="mb-4">
@@ -96,9 +213,10 @@ const RegisterForm = () => {
             className={inputClasses}
             value={formData.email}
             onChange={handleChange}
+            required
           />
         </div>
-        <div className="mb-4 text-">
+        <div className="mb-4">
           <label htmlFor="confirmEmail" className={labelClasses}>
             CONFIRM EMAIL (AMWAY ID)
           </label>
@@ -110,6 +228,7 @@ const RegisterForm = () => {
             className={inputClasses}
             value={formData.confirmEmail}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="mb-4">
@@ -122,6 +241,7 @@ const RegisterForm = () => {
             className={inputClasses}
             value={formData.country}
             onChange={handleChange}
+            required
           >
             <option>United States</option>
             <option>Canada</option>
@@ -138,6 +258,7 @@ const RegisterForm = () => {
             className={inputClasses}
             value={formData.language}
             onChange={handleChange}
+            required
           >
             <option>English</option>
             <option>Spanish</option>
