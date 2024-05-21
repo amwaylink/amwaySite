@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { graphql } from "gatsby"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import BrandSlider from "../components/products/BrandSlider"
 import ProductGrid from "../components/products/ProductGrid"
@@ -15,9 +15,13 @@ const IndexPage = ({ data }) => {
 
   useEffect(() => {
     const handleHashChange = () => {
-      const newCategory = window.location.hash.replace("#", "")
-      setCategory(newCategory)
-      setCurrentPage(1) // Reset to the first page
+      const hash = window.location.hash.replace("#", "")
+      if (hash === "registration") {
+        setCategory("")
+        setCurrentPage(1)
+      } else if (hash) {
+        navigate("/") // Redirect to home if any other fragment is found
+      }
     }
 
     // Set the category on component mount
