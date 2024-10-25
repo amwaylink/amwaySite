@@ -5,8 +5,8 @@ const NutritionRedirect = () => {
   useEffect(() => {
     // Delay the redirection by 3 seconds (3000ms)
     const timer = setTimeout(() => {
-      window.location.href = "https://amway.com/share-link/r7jVkoptz"
-    }, 3000) // 3000ms = 3 seconds
+      window.location.href = "https://www.amway.com/share-link/C777bG-LN"
+    }, 500) // 500ms = .5 second
 
     return () => clearTimeout(timer) // Cleanup if the component unmounts before the delay
   }, [])

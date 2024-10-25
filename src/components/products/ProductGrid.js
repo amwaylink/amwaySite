@@ -9,15 +9,15 @@ const ProductGrid = ({ products, category, currentPage, setCurrentPage }) => {
   const getHref = () => {
     switch (category.toLowerCase()) {
       case "nutrition":
-        return "https://amway.com/share-link/r7jVkoptz"
+        return "https://www.amway.com/share-link/r7jVkoptz"
       case "home":
-        return "https://amway.com/share-link/U1oIswVV2"
+        return "https://www.amway.com/share-link/U1oIswVV2"
       case "beauty":
-        return "https://amway.com/share-link/en4NiYTGh"
+        return "https://www.amway.com/share-link/en4NiYTGh"
       case "personal-care":
-        return "https://amway.com/share-link/G4~YojAyr"
+        return "https://www.amway.com/share-link/G4~YojAyr"
       default:
-        return "https://amway.com/share-link/8P45XUnP7"
+        return "https://www.amway.com/share-link/8P45XUnP7"
     }
   }
 

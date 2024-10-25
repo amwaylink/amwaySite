@@ -19,6 +19,10 @@ const IndexPage = ({ data }) => {
       if (hash === "registration") {
         setCategory("")
         setCurrentPage(1)
+      } else if (hash.includes("-products")) {
+        const selectedCategory = hash.replace("-products", "")
+        setCategory(selectedCategory)
+        setCurrentPage(1)
       } else if (hash) {
         navigate("/") // Redirect to home if any other fragment is found
       }
@@ -38,7 +42,7 @@ const IndexPage = ({ data }) => {
   const handleCategoryChange = newCategory => {
     setCategory(newCategory)
     setCurrentPage(1) // Reset to the first page
-    window.location.hash = newCategory
+    window.location.hash = `${newCategory}-products`
   }
 
   return (
