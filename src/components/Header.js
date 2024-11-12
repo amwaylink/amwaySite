@@ -6,16 +6,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid"
 import Submenu1 from "../components/menu/Submenu1"
 import Submenu2 from "../components/menu/Submenu2"
 import Submenu3 from "../components/menu/Submenu3"
-
-const MenuLink = ({ to, children, ...props }) => (
-  <Link
-    to={to}
-    {...props}
-    className="group uppercase flex items-center justify-center h-16 border-b md:border-b-2 border-b-transparent hover:border-b-gray-300 md:hover:border-b-black px-5 duration-200 bg-white"
-  >
-    {children}
-  </Link>
-)
+import MenuLink from "../components/MenuLink"
 
 const Header = ({ className }) => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -89,7 +80,6 @@ const Header = ({ className }) => {
       {showSubMenu === 1 && <Submenu1 />}
       {showSubMenu === 2 && <Submenu2 />}
       {showSubMenu === 3 && <Submenu3 />}
-
     </header>
   )
 }
