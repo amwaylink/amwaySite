@@ -43,6 +43,44 @@ const IndexPage = ({ data }) => {
     setCategory(newCategory)
     setCurrentPage(1) // Reset to the first page
     window.location.hash = `${newCategory}-products`
+
+    // Send category selection event to gtag
+    if (window.gtag) {
+      window.gtag("event", "category_click", {
+        send_to: "AW-16585635220",
+        event_category: "Category",
+        event_label: newCategory,
+        value: 1,
+      })
+    }
+  }
+
+  const handleProductClick = (productTitle, productCategory, productSku) => {
+    // Send product click event to Google Ads with custom parameters
+    if (window.gtag) {
+      window.gtag("event", "product_click", {
+        send_to: "AW-16585635220", // Replace with your Google Ads conversion ID
+        event_category: "Product",
+        event_label: productTitle,
+        value: 1,
+        product_category: productCategory,
+        product_sku: productSku,
+      })
+    }
+  }
+
+  const handleFormSubmit = e => {
+    e.preventDefault()
+
+    // Send form submission event to Google Ads
+    if (window.gtag) {
+      window.gtag("event", "form_submission", {
+        send_to: "AW-16585635220",
+        event_category: "Form",
+        event_label: "Registration Form",
+        value: 1,
+      })
+    }
   }
 
   return (
@@ -110,6 +148,7 @@ const IndexPage = ({ data }) => {
           category={category}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
+          onProductClick={handleProductClick} // Pass the click handler to ProductGrid
         />
       </div>
       <div className="w-full py-5 bg-gray-100 px-8">
@@ -119,7 +158,7 @@ const IndexPage = ({ data }) => {
         id="registration"
         className="w-full max-w-[600px] mx-auto py-10 lg:py-20"
       >
-        <RegistrationForm />
+        <RegistrationForm onSubmit={handleFormSubmit} />
       </div>
     </Layout>
   )
