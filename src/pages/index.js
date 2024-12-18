@@ -59,7 +59,7 @@ const IndexPage = ({ data }) => {
     // Send product click event to Google Ads with custom parameters
     if (window.gtag) {
       window.gtag("event", "product_click", {
-        send_to: "AW-16585635220", // Replace with your Google Ads conversion ID
+        send_to: "16585635220", // Replace with your Google Ads conversion ID
         event_category: "Product",
         event_label: productTitle,
         value: 1,
