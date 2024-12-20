@@ -65,6 +65,13 @@ const IndexPage = ({ data }) => {
         product_category: productCategory,
         product_sku: productSku,
       })
+      window.gtag("event", "product_click", {
+        event_category: "Product",
+        event_label: productTitle,
+        value: 1,
+        product_category: productCategory,
+        product_sku: productSku,
+      })
     }
   }
 
