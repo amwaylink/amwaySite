@@ -56,10 +56,9 @@ const IndexPage = ({ data }) => {
   }
 
   const handleProductClick = (productTitle, productCategory, productSku) => {
-    // Send product click event to Google Ads with custom parameters
     if (window.gtag) {
       window.gtag("event", "product_click", {
-        send_to: "16585635220", // Replace with your Google Ads conversion ID
+        send_to: "AW-16585635220", // Ensure full ID with prefix
         event_category: "Product",
         event_label: productTitle,
         value: 1,
@@ -148,7 +147,7 @@ const IndexPage = ({ data }) => {
           category={category}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          onProductClick={handleProductClick} // Pass the click handler to ProductGrid
+          onProductClick={handleProductClick}
         />
       </div>
       <div className="w-full py-5 bg-gray-100 px-8">

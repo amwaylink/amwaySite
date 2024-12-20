@@ -1,42 +1,32 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import ProductCard from "./ProductCard"
 
-const ProductGrid = ({ products, category, currentPage, setCurrentPage }) => {
-  const [shuffledProducts, setShuffledProducts] = useState([])
+const ProductGrid = ({
+  products,
+  category,
+  currentPage,
+  setCurrentPage,
+  onProductClick,
+}) => {
+  const [shuffledProducts] = useState(products)
   const productsPerPage = 12
 
-  const getHref = () => {
-    switch (category.toLowerCase()) {
-      case "nutrition":
-        return "https://www.amway.com/share-link/r7jVkoptz"
-      case "home":
-        return "https://www.amway.com/share-link/U1oIswVV2"
-      case "beauty":
-        return "https://www.amway.com/share-link/en4NiYTGh"
-      case "personal-care":
-        return "https://www.amway.com/share-link/G4~YojAyr"
-      default:
-        return "https://www.amway.com/share-link/8P45XUnP7"
-    }
+  const categoryLinks = {
+    nutrition: "https://www.amway.com/share-link/r7jVkoptz",
+    home: "https://www.amway.com/share-link/U1oIswVV2",
+    beauty: "https://www.amway.com/share-link/en4NiYTGh",
+    personalCare: "https://www.amway.com/share-link/G4~YojAyr",
+    default: "https://www.amway.com/share-link/8P45XUnP7",
   }
 
-  useEffect(() => {
-    if (!category) {
-      setShuffledProducts(products)
-    }
-  }, [category, products])
+  const getHref = () =>
+    categoryLinks[category.toLowerCase()] || categoryLinks.default
 
-  let filteredProducts = products
+  let filteredProducts = category
+    ? products.filter(product => product.category === category)
+    : shuffledProducts
 
-  // Filter products by category if specified
-  if (category) {
-    filteredProducts = products.filter(product => product.category === category)
-  } else {
-    filteredProducts = shuffledProducts
-  }
-
-  // Calculate the products to display for the current page
   const indexOfLastProduct = currentPage * productsPerPage
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage
   const currentProducts = filteredProducts.slice(
@@ -44,20 +34,33 @@ const ProductGrid = ({ products, category, currentPage, setCurrentPage }) => {
     indexOfLastProduct
   )
 
-  // Handle page change
-  const handlePageChange = pageNumber => {
-    setCurrentPage(pageNumber)
-  }
+  const handlePageChange = pageNumber => setCurrentPage(pageNumber)
 
-  // Calculate total pages
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage)
+
+  if (filteredProducts.length === 0) {
+    return (
+      <div className="text-center py-10">
+        <p>No products found in the selected category.</p>
+      </div>
+    )
+  }
 
   return (
     <div className="w-11/12 max-w-[1366px] mx-auto pb-10">
       <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {currentProducts.map(product => (
           <div key={product.sku}>
-            <ProductCard product={product} />
+            <ProductCard
+              product={product}
+              onClick={() =>
+                onProductClick(
+                  product.product_title,
+                  product.category,
+                  product.sku
+                )
+              }
+            />
           </div>
         ))}
       </div>
@@ -81,6 +84,11 @@ const ProductGrid = ({ products, category, currentPage, setCurrentPage }) => {
       <div className="w-full flex justify-center items-center pt-10 ">
         <a
           href={getHref()}
+          onClick={e => {
+            e.preventDefault()
+            onProductClick("Shop All Products", category, "N/A")
+            window.location.href = getHref()
+          }}
           rel="noopener noreferrer"
           className="w-max px-6 py-3 bg-black uppercase text-white rounded-full"
         >
@@ -109,6 +117,7 @@ ProductGrid.propTypes = {
   category: PropTypes.string,
   currentPage: PropTypes.number.isRequired,
   setCurrentPage: PropTypes.func.isRequired,
+  onProductClick: PropTypes.func.isRequired,
 }
 
 ProductGrid.defaultProps = {
