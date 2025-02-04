@@ -41,6 +41,10 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
         {
+          name: "referrer",
+          content: "no-referrer",
+        },
+        {
           property: `og:title`,
           content: title,
         },
