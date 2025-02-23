@@ -26,7 +26,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <a
-      href={"#"}
+      href={product.link}
       rel="noopener noreferrer"
       onClick={handleProductClick} // Trigger tracking on click
       className="bg-white max-w-[22rem] rounded-xl shadow-lg grid grid-rows-[1fr_auto_auto] sm:grid-rows-[1fr_auto_1fr] w-full aspect-[3/5] sm:aspect-[3/4] overflow-hidden border my-5 group"
