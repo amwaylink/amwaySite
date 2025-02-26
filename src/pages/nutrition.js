@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import LoadingWithImages from "../components/LoadingWithImages"
+import LoadingDots from "../components/LoadingDots"
 
 const NutritionRedirect = () => {
   useEffect(() => {
@@ -13,7 +13,7 @@ const NutritionRedirect = () => {
 
   return (
     <div>
-      <LoadingWithImages />
+      <LoadingDots />
     </div>
   )
 }

@@ -2,6 +2,14 @@ const path = require("path")
 const fs = require("fs")
 const csv = require("csv-parser")
 
+exports.createPages = async ({ actions }) => {
+  const { createPage } = actions
+  createPage({
+    path: "/redirect",
+    component: require.resolve("./src/pages/redirect.js"),
+  })
+}
+
 exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
   const { createNode } = actions
 

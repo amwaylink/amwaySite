@@ -5,8 +5,7 @@ import PropTypes from "prop-types"
 const BrandCard = ({ brand }) => {
   return (
     <a
-      href={brand.link}
-      target="_blank"
+      href={`/redirect?url=${encodeURIComponent(brand.link)}`}
       rel="noopener noreferrer"
       className="bg-white max-w-[22rem] w-full aspect-square"
     >
